@@ -1,0 +1,13 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="480" rx="28" fill="#FFF8FD"/>
+<ellipse cx="220" cy="190" rx="58" ry="72" fill="#FF7EBD"/>
+<ellipse cx="300" cy="165" rx="58" ry="72" fill="#FFB3D8"/>
+<ellipse cx="380" cy="190" rx="58" ry="72" fill="#7FDDFF"/>
+<ellipse cx="460" cy="170" rx="58" ry="72" fill="#FF7EBD"/>
+<path d="M220 265L320 385" stroke="#D7197A" stroke-width="5"/>
+<path d="M300 236L330 385" stroke="#D7197A" stroke-width="5"/>
+<path d="M380 265L340 385" stroke="#D7197A" stroke-width="5"/>
+<path d="M460 240L350 385" stroke="#D7197A" stroke-width="5"/>
+<rect x="260" y="380" width="145" height="56" rx="18" fill="#FF2F92"/>
+<text x="281" y="416" fill="white" font-size="28" font-family="Verdana" font-weight="700">Bouquet</text>
+</svg>

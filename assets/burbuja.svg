@@ -1,0 +1,9 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="480" rx="28" fill="#FFF7FD"/>
+<circle cx="320" cy="228" r="150" fill="#EAFBFF" stroke="#60C8F4" stroke-width="9"/>
+<path d="M220 220C248 174 286 160 332 160C378 160 420 178 438 222" stroke="#FF2F92" stroke-width="12" stroke-linecap="round"/>
+<path d="M238 280C274 312 304 326 350 320C396 314 422 290 434 265" stroke="#7E3CB2" stroke-width="12" stroke-linecap="round"/>
+<circle cx="284" cy="215" r="13" fill="#FF2F92"/>
+<circle cx="347" cy="215" r="13" fill="#FF2F92"/>
+<text x="198" y="404" fill="#3D7BA7" font-size="34" font-family="Verdana" font-weight="700">Burbuja Pintada</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="480" rx="28" fill="#FFF8FD"/>
+<circle cx="320" cy="240" r="180" fill="#FFE6F4" stroke="#FF5EAD" stroke-width="8"/>
+<circle cx="260" cy="200" r="48" fill="#FF8DC5"/>
+<circle cx="360" cy="190" r="62" fill="#9EE4FF"/>
+<circle cx="330" cy="290" r="54" fill="#FFD27B"/>
+<rect x="190" y="350" width="260" height="44" rx="22" fill="#FF2F92"/>
+<text x="235" y="380" fill="white" font-size="28" font-family="Verdana" font-weight="700">Encapsulado</text>
+</svg>

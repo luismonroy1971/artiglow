@@ -1,0 +1,10 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="480" rx="28" fill="#F7FDFF"/>
+<rect x="120" y="250" width="400" height="120" rx="30" fill="#FFE8B8" stroke="#E6B34B" stroke-width="8"/>
+<circle cx="190" cy="230" r="42" fill="#FF7FBF"/>
+<circle cx="260" cy="214" r="36" fill="#FFA6D2"/>
+<circle cx="320" cy="230" r="40" fill="#6AD7FF"/>
+<circle cx="390" cy="212" r="34" fill="#FF7FBF"/>
+<circle cx="450" cy="226" r="38" fill="#FFA6D2"/>
+<text x="173" y="326" fill="#95580D" font-size="34" font-family="Verdana" font-weight="700">Bandeja Deluxe</text>
+</svg>
