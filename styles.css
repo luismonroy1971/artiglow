@@ -64,8 +64,8 @@ a {
 }
 
 .brand-logo {
-  width: 48px;
-  height: 48px;
+  width: 76px;
+  height: 76px;
   object-fit: cover;
   border-radius: 999px;
   border: 2px solid #ffd2e8;
@@ -74,13 +74,14 @@ a {
 
 .brand-text {
   font-family: "Baloo 2", cursive;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: var(--pink-700);
 }
 
 .menu {
   display: flex;
   gap: 1.3rem;
+  font-family: "Baloo 2", cursive;
   font-weight: 700;
   color: var(--text-600);
 }
@@ -123,6 +124,11 @@ a {
   background: transparent;
   border: 2px solid var(--pink-500);
   box-shadow: none;
+}
+
+.btn-whatsapp {
+  background: linear-gradient(120deg, #25d366, #149647);
+  box-shadow: 0 8px 20px rgba(20, 150, 71, 0.25);
 }
 
 .hero {
@@ -201,6 +207,14 @@ a {
   box-shadow: var(--shadow);
 }
 
+.hero-art img {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
 .section {
   padding: 3.4rem 0;
 }
@@ -221,7 +235,7 @@ h2 {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -319,6 +333,43 @@ h2 {
   margin: 1rem 0 0;
   padding-left: 1.2rem;
   color: var(--text-600);
+}
+
+.social-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.social-links a {
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid #ffd2e8;
+  background: #fff;
+  font-weight: 800;
+  color: var(--pink-700);
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 35;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #25d366, #149647);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(20, 150, 71, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-icon {
+  width: 1.65rem;
+  height: 1.65rem;
 }
 
 .contact-form {

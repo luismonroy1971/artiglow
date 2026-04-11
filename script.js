@@ -4,42 +4,28 @@ const products = [
     name: "Encapsulado Premium",
     description: "Globo transparente con mini peluche, luces y mensaje personalizado.",
     price: 85,
-    image: "./assets/encapsulado.svg"
+    image: "./assets/encapsulado.webp"
   },
   {
     id: "bandeja-desayuno-deluxe",
     name: "Bandeja de Desayuno Deluxe",
     description: "Incluye snacks, bebida, globo temático y dedicatoria.",
     price: 120,
-    image: "./assets/bandeja.svg"
+    image: "./assets/bandeja de desayuno.webp"
   },
   {
     id: "burbuja-pintada",
     name: "Burbuja Pintada",
     description: "Diseño artístico a mano sobre globo burbuja para regalo especial.",
     price: 95,
-    image: "./assets/burbuja.svg"
+    image: "./assets/globo pintado.jpg"
   },
   {
     id: "bouquet-festivo",
     name: "Bouquet Festivo",
     description: "Arreglo de globos metalizados y latex con combinación a elección.",
     price: 75,
-    image: "./assets/bouquet.svg"
-  },
-  {
-    id: "arco-decorativo",
-    name: "Arco Decorativo",
-    description: "Instalación de arco orgánico para ingreso o mesa principal.",
-    price: 260,
-    image: "./assets/evento.svg"
-  },
-  {
-    id: "combo-sorpresa",
-    name: "Combo Sorpresa",
-    description: "Encapsulado + bouquet + mini bandeja para sorprender en grande.",
-    price: 189,
-    image: "./assets/hero-balloons.svg"
+    image: "./assets/Bouquet Festivo.png"
   }
 ];
 
@@ -52,6 +38,7 @@ const cartToggle = document.getElementById("cart-toggle");
 const cartBody = document.querySelector(".cart-body");
 const sendOrderBtn = document.getElementById("send-order");
 const contactForm = document.getElementById("contact-form");
+const whatsappNumber = "51944531935";
 
 const money = new Intl.NumberFormat("es-PE", {
   style: "currency",
@@ -173,7 +160,7 @@ function sendOrder() {
     "¿Me ayudan con disponibilidad y entrega?"
   ].join("\n");
 
-  const url = `https://wa.me/51999888777?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   window.open(url, "_blank");
 }
 
@@ -192,7 +179,7 @@ function submitContactForm(event) {
     `Detalle: ${details || "Sin detalle adicional"}`
   ].join("\n");
 
-  const url = `https://wa.me/51999888777?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   window.open(url, "_blank");
   contactForm.reset();
 }
