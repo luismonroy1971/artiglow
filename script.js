@@ -39,6 +39,7 @@ const cartBody = document.querySelector(".cart-body");
 const sendOrderBtn = document.getElementById("send-order");
 const contactForm = document.getElementById("contact-form");
 const whatsappNumber = "51944531935";
+const contactEmail = "info@artiglow.shop";
 
 const money = new Intl.NumberFormat("es-PE", {
   style: "currency",
@@ -57,7 +58,7 @@ function renderCatalog() {
           <p class="product-desc">${product.description}</p>
           <div class="product-row">
             <span class="price">${money.format(product.price)}</span>
-            <button class="btn btn-sm add-btn" data-id="${product.id}" type="button">Agregar</button>
+            <button class="btn btn-sm info-btn" data-id="${product.id}" type="button">Informes</button>
           </div>
         </div>
       </article>
@@ -65,12 +66,27 @@ function renderCatalog() {
     )
     .join("");
 
-  document.querySelectorAll(".add-btn").forEach((button) => {
+  document.querySelectorAll(".info-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const id = button.dataset.id;
-      addToCart(id);
+      const product = products.find((item) => item.id === id);
+      if (!product) {
+        return;
+      }
+      sendProductInquiry(product);
     });
   });
+}
+
+function sendProductInquiry(product) {
+  const text = [
+    "Hola ArtiGlow, quiero información de este producto:",
+    `${product.name}`,
+    `Precio referencial: ${money.format(product.price)}`,
+    "¿Tienen disponibilidad y opciones de personalización?"
+  ].join("\n");
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
 }
 
 function addToCart(id) {
@@ -171,16 +187,18 @@ function submitContactForm(event) {
   const eventType = document.getElementById("eventType").value.trim();
   const details = document.getElementById("details").value.trim();
 
-  const text = [
-    "Hola ArtiGlow, quiero cotizar un servicio:",
-    `Nombre: ${name}`,
-    `Celular: ${phone}`,
-    `Evento: ${eventType}`,
-    `Detalle: ${details || "Sin detalle adicional"}`
-  ].join("\n");
-
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank");
+  const subject = encodeURIComponent(`Consulta de servicio - ${eventType}`);
+  const body = encodeURIComponent(
+    [
+      "Hola ArtiGlow, quiero cotizar un servicio:",
+      `Nombre: ${name}`,
+      `Celular: ${phone}`,
+      `Evento: ${eventType}`,
+      `Detalle: ${details || "Sin detalle adicional"}`
+    ].join("\n")
+  );
+  const mailtoUrl = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+  window.location.href = mailtoUrl;
   contactForm.reset();
 }
 
