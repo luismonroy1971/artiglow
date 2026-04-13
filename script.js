@@ -180,26 +180,37 @@ function sendOrder() {
   window.open(url, "_blank");
 }
 
-function submitContactForm(event) {
+async function submitContactForm(event) {
   event.preventDefault();
   const name = document.getElementById("name").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const eventType = document.getElementById("eventType").value.trim();
   const details = document.getElementById("details").value.trim();
+  try {
+    const response = await fetch("./send-contact.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        phone,
+        eventType,
+        details,
+        to: contactEmail
+      })
+    });
 
-  const subject = encodeURIComponent(`Consulta de servicio - ${eventType}`);
-  const body = encodeURIComponent(
-    [
-      "Hola ArtiGlow, quiero cotizar un servicio:",
-      `Nombre: ${name}`,
-      `Celular: ${phone}`,
-      `Evento: ${eventType}`,
-      `Detalle: ${details || "Sin detalle adicional"}`
-    ].join("\n")
-  );
-  const mailtoUrl = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-  window.location.href = mailtoUrl;
-  contactForm.reset();
+    const result = await response.json();
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || "No se pudo enviar el formulario.");
+    }
+
+    alert("¡Gracias! Tu solicitud fue enviada correctamente.");
+    contactForm.reset();
+  } catch (error) {
+    alert("No se pudo enviar el formulario. Inténtalo nuevamente en unos minutos.");
+  }
 }
 
 cartToggle.addEventListener("click", () => {
