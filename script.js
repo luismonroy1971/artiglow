@@ -3,28 +3,24 @@ const products = [
     id: "encapsulado-premium",
     name: "Encapsulado Premium",
     description: "Globo transparente con mini peluche, luces y mensaje personalizado.",
-    price: 85,
     image: "./assets/encapsulado.webp"
   },
   {
     id: "bandeja-desayuno-deluxe",
     name: "Bandeja de Desayuno Deluxe",
     description: "Incluye snacks, bebida, globo temático y dedicatoria.",
-    price: 120,
     image: "./assets/bandeja de desayuno.webp"
   },
   {
     id: "burbuja-pintada",
     name: "Burbuja Pintada",
     description: "Diseño artístico a mano sobre globo burbuja para regalo especial.",
-    price: 95,
     image: "./assets/globo pintado.jpg"
   },
   {
     id: "bouquet-festivo",
     name: "Bouquet Festivo",
     description: "Arreglo de globos metalizados y latex con combinación a elección.",
-    price: 75,
     image: "./assets/Bouquet Festivo.png"
   }
 ];
@@ -32,7 +28,6 @@ const products = [
 const cart = new Map();
 const catalogGrid = document.getElementById("catalog-grid");
 const cartItems = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
 const cartCount = document.getElementById("cart-count");
 const cartToggle = document.getElementById("cart-toggle");
 const cartBody = document.querySelector(".cart-body");
@@ -40,12 +35,6 @@ const sendOrderBtn = document.getElementById("send-order");
 const contactForm = document.getElementById("contact-form");
 const whatsappNumber = "51944531935";
 const contactEmail = "info@artiglow.shop";
-
-const money = new Intl.NumberFormat("es-PE", {
-  style: "currency",
-  currency: "PEN",
-  minimumFractionDigits: 2
-});
 
 function renderCatalog() {
   catalogGrid.innerHTML = products
@@ -57,7 +46,6 @@ function renderCatalog() {
           <h3 class="product-title">${product.name}</h3>
           <p class="product-desc">${product.description}</p>
           <div class="product-row">
-            <span class="price">${money.format(product.price)}</span>
             <button class="btn btn-sm info-btn" data-id="${product.id}" type="button">Informes</button>
           </div>
         </div>
@@ -82,7 +70,6 @@ function sendProductInquiry(product) {
   const text = [
     "Hola ArtiGlow, quiero información de este producto:",
     `${product.name}`,
-    `Precio referencial: ${money.format(product.price)}`,
     "¿Tienen disponibilidad y opciones de personalización?"
   ].join("\n");
   const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
@@ -106,7 +93,6 @@ function removeFromCart(id) {
 }
 
 function getCartSummary() {
-  let total = 0;
   let count = 0;
   const lines = [];
 
@@ -115,19 +101,16 @@ function getCartSummary() {
     if (!product) {
       return;
     }
-    const subtotal = product.price * qty;
-    total += subtotal;
     count += qty;
-    lines.push(`${qty}x ${product.name} - ${money.format(subtotal)}`);
+    lines.push(`${qty}x ${product.name}`);
   });
 
-  return { total, count, lines };
+  return { count, lines };
 }
 
 function renderCart() {
-  const { total, count } = getCartSummary();
+  const { count } = getCartSummary();
   cartCount.textContent = String(count);
-  cartTotal.textContent = money.format(total);
 
   if (count === 0) {
     cartItems.innerHTML = `<li class="cart-item"><span>Tu carrito está vacío</span></li>`;
@@ -144,7 +127,7 @@ function renderCart() {
       <li class="cart-item">
         <div>
           <strong>${product.name}</strong><br>
-          <small>${qty} x ${money.format(product.price)}</small>
+          <small>${qty} unidad(es)</small>
         </div>
         <button class="btn btn-sm remove-btn" data-id="${id}" type="button">Quitar</button>
       </li>
@@ -161,7 +144,7 @@ function renderCart() {
 }
 
 function sendOrder() {
-  const { lines, total, count } = getCartSummary();
+  const { lines, count } = getCartSummary();
   if (count === 0) {
     alert("Agrega al menos un producto a tu pedido.");
     return;
@@ -171,8 +154,6 @@ function sendOrder() {
     "Hola ArtiGlow, quiero realizar este pedido:",
     "",
     ...lines,
-    "",
-    `Total estimado: ${money.format(total)}`,
     "¿Me ayudan con disponibilidad y entrega?"
   ].join("\n");
 
